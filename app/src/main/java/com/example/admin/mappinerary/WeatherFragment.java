@@ -79,12 +79,13 @@ public class WeatherFragment extends android.support.v4.app.Fragment {
 
     private void renderWeather(JSONObject json){
         try {
-            cityField.setText(json.getString("name").toUpperCase(Locale.US) +
-                    ", " +
-                    json.getJSONObject("sys").getString("country"));
+            cityField.setText(json.getJSONObject("city").getString("name").toUpperCase(Locale.US)
+                    +", " +
+                    json.getJSONObject("city").getString("country"));
 
-            JSONObject details = json.getJSONArray("weather").getJSONObject(0);
-            JSONObject main = json.getJSONObject("main");
+            JSONObject day1 =json.getJSONArray("list").getJSONObject(1);
+            JSONObject details = day1.getJSONArray("weather").getJSONObject(0);
+            JSONObject main = day1.getJSONObject("main");
             detailsField.setText(
                     details.getString("description").toUpperCase(Locale.US) +
                             "\n" + "Humidity: " + main.getString("humidity") + "%" +
@@ -98,8 +99,8 @@ public class WeatherFragment extends android.support.v4.app.Fragment {
             updatedField.setText("Last update: " + updatedOn);
 
             setWeatherIcon(details.getInt("id"),
-                    json.getJSONObject("sys").getLong("sunrise") * 1000,
-                    json.getJSONObject("sys").getLong("sunset") * 1000);
+                    1446849974,  //sunrise time
+                    1446893411); //sunset time
 
         }catch(Exception e){
             Log.e("SimpleWeather", "One or more fields not found in the JSON data");

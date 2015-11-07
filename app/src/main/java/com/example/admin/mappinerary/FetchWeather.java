@@ -15,7 +15,7 @@ import java.net.URL;
  */
 public class FetchWeather {
     private static final String OPEN_WEATHER_MAP_API =
-            "http://api.openweathermap.org/data/2.5/weather?q=Singapore&appid=2de143494c0b295cca9337e1e96b00e0";
+            "http://api.openweathermap.org/data/2.5/forecast?q=Singapore&appid=2de143494c0b295cca9337e1e96b00e0";
 
     public static JSONObject getJSON(Context context){
         try {
