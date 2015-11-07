@@ -31,7 +31,8 @@ public class Detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        initiateItemList();
+        //TODO: call initiateItemList() only when there is a change in locations
+        //initiateItemList();
         updateUI();
     }
 
